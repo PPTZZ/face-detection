@@ -1,0 +1,49 @@
+.link-container{
+    display: flex;
+    gap: 2vh;
+    align-items: center;
+    flex-direction: column;
+}
+
+input{
+    width: 60vw;
+    height: 3vh;
+}
+
+button{
+    width: 20vw;
+    height: 5vh;
+    background-color: rgb(245, 134, 65);
+    border: 0 solid;
+    border-radius: 0.5vh;
+    
+}
+
+button:hover{
+    animation: transformation 0.5s forwards;
+}
+
+@keyframes transformation{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.05);
+    }
+}
+
+button:active{
+    animation: press 0.2s 1 linear;
+}
+@keyframes press {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.92);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
