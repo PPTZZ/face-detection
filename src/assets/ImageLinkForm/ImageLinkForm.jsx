@@ -1,17 +1,18 @@
-import './imageLinkForm.css'
+import './imageLinkForm.css';
 
-const ImageLinkForm = ()=>{
+
+const ImageLinkForm = ({onInputChange})=>{
     return(
         <>
             <p className="f3 tc">
                 {'Insert image URL to detect faces'}
             </p>
             <div className="link-container">
-                <input type="text"/>
+                <input type="text" onChange={onInputChange}/>
                 <button>DETECT</button>
             </div>
         </>
     )
 }
 
-export default ImageLinkForm
+export default ImageLinkForm;
