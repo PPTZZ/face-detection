@@ -1,7 +1,7 @@
 import './imageLinkForm.css';
 
 
-const ImageLinkForm = ({onInputChange})=>{
+const ImageLinkForm = ({onInputChange, onButtonSubmit})=>{
     return(
         <>
             <p className="f3 tc">
@@ -9,7 +9,7 @@ const ImageLinkForm = ({onInputChange})=>{
             </p>
             <div className="link-container">
                 <input type="text" onChange={onInputChange}/>
-                <button>DETECT</button>
+                <button onClick={onButtonSubmit}>DETECT</button>
             </div>
         </>
     )
