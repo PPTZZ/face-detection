@@ -3,15 +3,49 @@ import TParticles from './assets/TSParticles/TSParticles'
 import Navigation from './assets/Navigation/Navigation'
 import Logo from './assets/Logo/Logo'
 import ImageLinkForm from './assets/ImageLinkForm/ImageLinkForm'
+import FaceRecognition from './assets/FaceRecognition/FaceRecognition'
 import Rank from './assets/Rank/Rank'
 import './App.css'
 
+const returnClarifaiRequest = (imageURL) =>{
+  const PAT = '144557196bec4077ae1597172dc82b42';
+  const USER_ID = 'pptzz';       
+  const APP_ID = 'face-detector';
+  const IMAGE_URL = imageURL;
+
+  const raw = JSON.stringify({
+    "user_app_id": {
+        "user_id": USER_ID,
+        "app_id": APP_ID
+    },
+    "inputs": [
+        {
+            "data": {
+                "image": {
+                    "url": IMAGE_URL
+                }
+            }
+        }
+    ]
+});
+const requestOptions = {
+  method: 'POST',
+  headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Key ' + PAT
+  },
+  body: raw
+};
+return requestOptions;
+
+}
 
 class App extends Component{
   constructor(){
     super();
     this.state = {
       input:'',
+      imageURL:'',
     }
   }
 
@@ -20,45 +54,13 @@ class App extends Component{
   }
 
   onButtonSubmit = () => {
-    console.log(`click!`)
-        
-    const PAT = '144557196bec4077ae1597172dc82b42';
-    const USER_ID = 'pptzz';       
-    const APP_ID = 'my-first-application-smn1d';
-    const MODEL_ID = 'face-detection'; 
-    const IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg';
+  this.setState({imageURL:this.state.input})
 
-    const raw = JSON.stringify({
-        "user_app_id": {
-            "user_id": USER_ID,
-            "app_id": APP_ID
-        },
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": IMAGE_URL
-                    }
-                }
-            }
-        ]
-    });
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
-        },
-        body: raw
-    };
-
-    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs", requestOptions)
-        .then(response => response.text())
+    fetch("https://api.clarifai.com/v2/models/color-recognition/outputs", returnClarifaiRequest(this.state.input))
+        .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
-  }
+    }
 
   render(){
     return(
@@ -72,7 +74,7 @@ class App extends Component{
             onInputChange={this.onInputChange} 
             onButtonSubmit={this.onButtonSubmit}
           />
-          {/* {<FaceRecognition/>} */}
+          <FaceRecognition imageURL = {this.state.imageURL}/>
         </div>
       </>
     )

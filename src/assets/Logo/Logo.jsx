@@ -8,7 +8,7 @@ const Logo = ()=>{
         <>
             <div className=" ma4 mt0 logo-container">
             <Tilt>
-                  <img src={brain} alt='digital-brain'/>
+                  <img className='brain' src={brain} alt='digital-brain'/>
             </Tilt>
             </div>
         </>
