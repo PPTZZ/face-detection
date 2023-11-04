@@ -5,13 +5,15 @@
     flex-direction: column;
 }
 
-input{
+.image-input{
+    max-width: 920px;
     width: 60vw;
     height: 3vh;
 }
 
 button{
     width: 20vw;
+    max-width: 385px;
     height: 5vh;
     background-color: rgb(245, 134, 65);
     border: 0 solid;

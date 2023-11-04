@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import TParticles from './assets/TSParticles/TSParticles'
+import Signin from './Signin/Signin'
 import Navigation from './assets/Navigation/Navigation'
 import Logo from './assets/Logo/Logo'
 import ImageLinkForm from './assets/ImageLinkForm/ImageLinkForm'
@@ -47,6 +48,7 @@ class App extends Component{
       input:'',
       imageURL:'',
       box:{},
+      route:'signin'
     }
   }
 
@@ -72,30 +74,39 @@ class App extends Component{
   }
 
   onButtonSubmit = () => {
-  this.setState({imageURL:this.state.input})
+   this.setState({imageURL:this.state.input})
 
     fetch("https://api.clarifai.com/v2/models/face-detection/outputs", returnClarifaiRequest(this.state.input))
-        .then(response => response.json())
-        .then(response => this.displayBox(this.calculateFaceLoc(response)))
-        .catch(error => console.log('error', error));
-    }
+      .then(response => response.json())
+      .then(response => this.displayBox(this.calculateFaceLoc(response)))
+      .catch(error => console.log('error', error));
+  }
+
+  onRouteChange = (route) =>{
+    this.setState({route:'route'})
+  }
 
   render(){
     return(
       <>
         <div className='App'>
           <TParticles/>
-          <Navigation/>
-          <Logo/>
-          <Rank/>
-          <ImageLinkForm 
-            onInputChange={this.onInputChange} 
-            onButtonSubmit={this.onButtonSubmit}
-          />
-          <FaceRecognition 
-            imageURL={this.state.imageURL}
-            box={this.state.box}
-          />
+          { this.state.route === 'signin' 
+          ? <Signin onRouteChange={this.onRouteChange}/>
+          :<>
+            <Navigation onRouteChange={this.onRouteChange}/>
+            <Logo/>
+            <Rank/>
+            <ImageLinkForm 
+              onInputChange={this.onInputChange} 
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecognition 
+              imageURL={this.state.imageURL}
+              box={this.state.box}
+            />
+          </> 
+            }
         </div>
       </>
     )

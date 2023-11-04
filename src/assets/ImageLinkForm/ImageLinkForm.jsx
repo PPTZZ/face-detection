@@ -8,7 +8,7 @@ const ImageLinkForm = ({onInputChange, onButtonSubmit})=>{
                 {'Insert image URL to detect faces'}
             </p>
             <div className="link-container">
-                <input type="text" onChange={onInputChange}/>
+                <input type="text" className='image-input' onChange={onInputChange}/>
                 <button onClick={onButtonSubmit}>DETECT</button>
             </div>
         </>

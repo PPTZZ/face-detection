@@ -1,0 +1,24 @@
+
+.login{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10vh;
+}
+
+form{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.component{
+    position: relative;
+    top: 20vh;
+    display: flex;
+    flex-flow: column;
+    gap: 1vh;
+    width: 20vw;
+    max-width: 385px;
+}
