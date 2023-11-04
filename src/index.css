@@ -2,9 +2,10 @@
 
 body{
     margin: 0;
-    padding: 0;
+    padding: 1vh;
     background-image: linear-gradient(to right, rgb(222, 40, 114), rgb(245, 134, 65));
     font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
 }
 
 
