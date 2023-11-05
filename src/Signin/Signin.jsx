@@ -1,7 +1,7 @@
 import './signin.css'
 import Logo from "../assets/Logo/Logo"
 
-const Signin = ({onRouteChange})=>{
+const Signin = ({onSignIn})=>{
     return(
         <div className='login'>
             <div className='signin-card'>
@@ -15,7 +15,7 @@ const Signin = ({onRouteChange})=>{
                         <label>password: </label>
                         <input type="password" id="password-input"></input><br/>
                         <button className='signin-button'
-                            onClick={() => onRouteChange('home')}>
+                            onClick={onSignIn}>
                             SIGN IN
                         </button>
                     </div>

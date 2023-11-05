@@ -1,10 +1,10 @@
 
-const Navigation = ({onRouteChange})=>{
+const Navigation = ({onSignOut})=>{
     return(
         <>
           <nav style={{display:'flex',justifyContent:'flex-end'}}>
             <p className='f3 link dim black underline pa3 pointer'
-              onClick={()=>onRouteChange('signin')}>
+              onClick={onSignOut}>
               Sign Out
             </p>
           </nav>

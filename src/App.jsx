@@ -48,7 +48,7 @@ class App extends Component{
       input:'',
       imageURL:'',
       box:{},
-      route:'signin'
+      route:'signin',
     }
   }
 
@@ -82,8 +82,12 @@ class App extends Component{
       .catch(error => console.log('error', error));
   }
 
-  onRouteChange = (route) =>{
-    this.setState({route:'route'})
+  onSignIn = () => {
+    this.setState({route:'home'})
+  }
+  
+  onSignOut = () => {
+    this.setState({route:'signin'})
   }
 
   render(){
@@ -91,22 +95,23 @@ class App extends Component{
       <>
         <div className='App'>
           <TParticles/>
-          { this.state.route === 'signin' 
-          ? <Signin onRouteChange={this.onRouteChange}/>
-          :<>
-            <Navigation onRouteChange={this.onRouteChange}/>
-            <Logo/>
-            <Rank/>
-            <ImageLinkForm 
-              onInputChange={this.onInputChange} 
-              onButtonSubmit={this.onButtonSubmit}
-            />
-            <FaceRecognition 
-              imageURL={this.state.imageURL}
-              box={this.state.box}
-            />
-          </> 
-            }
+
+          {this.state.route === 'signin'
+          ? <Signin onSignIn={this.onSignIn}/>
+          : <>
+              <Navigation onSignOut={this.onSignOut} />
+              <Logo/>
+              <Rank/>
+              <ImageLinkForm 
+               onInputChange={this.onInputChange} 
+                onButtonSubmit={this.onButtonSubmit}
+              />
+              <FaceRecognition 
+                imageURL={this.state.imageURL}
+                box={this.state.box}
+              />
+            </>
+          }
         </div>
       </>
     )
