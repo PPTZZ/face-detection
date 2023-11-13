@@ -1,4 +1,6 @@
-
+.title{
+    padding-top: 5vh;
+}
 .login{
     display: flex;
     flex-flow: column;
@@ -15,7 +17,7 @@ form{
 
 .component{
     position: relative;
-    top: 20vh;
+    top: 10vh;
     display: flex;
     flex-flow: column;
     gap: 1vh;

@@ -1,11 +1,12 @@
-import './signin.css'
-import Logo from "../assets/Logo/Logo"
+import './register.css'
+import Logo from "../Logo/Logo"
 
-const Signin = ({onSignIn})=>{
+const Register = ({onSignIn})=>{
     return(
         <div className='login'>
             <div className='signin-card'>
-            <Logo/>
+                <Logo/>
+                <h1 className='title black tc'>REGISTER</h1> 
                 <form>
                     <div className='email-box component'>   
                         <label form="email-input">e-mail: </label>
@@ -16,7 +17,7 @@ const Signin = ({onSignIn})=>{
                         <input type="password" id="password-input"></input><br/>
                         <button className='signin-button'
                             onClick={onSignIn}>
-                            SIGN IN
+                            REGISTER
                         </button>
                     </div>
                 </form>
@@ -25,4 +26,4 @@ const Signin = ({onSignIn})=>{
     )
 }
 
-export default Signin
+export default Register

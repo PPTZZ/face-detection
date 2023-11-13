@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import TParticles from './assets/TSParticles/TSParticles'
-import Signin from './Signin/Signin'
+import Register from './assets/Register/Register'
+import Signin from './assets/Signin/Signin'
 import Navigation from './assets/Navigation/Navigation'
 import Logo from './assets/Logo/Logo'
 import ImageLinkForm from './assets/ImageLinkForm/ImageLinkForm'
@@ -90,26 +91,37 @@ class App extends Component{
     this.setState({route:'signin'})
   }
 
+  onRegister = () =>{
+    this.setState({route:'register'})
+  }
+
   render(){
     return(
       <>
         <div className='App'>
           <TParticles/>
-
           {this.state.route === 'signin'
-          ? <Signin onSignIn={this.onSignIn}/>
+          ? <Signin 
+              onSignIn={this.onSignIn}
+              onRegister={this.onRegister}
+          />
           : <>
+              {this.state.route === 'register'
+              ? <Register onSignIn={this.onSignIn}/>
+              : <>
               <Navigation onSignOut={this.onSignOut} />
               <Logo/>
               <Rank/>
               <ImageLinkForm 
-               onInputChange={this.onInputChange} 
+                onInputChange={this.onInputChange} 
                 onButtonSubmit={this.onButtonSubmit}
               />
               <FaceRecognition 
                 imageURL={this.state.imageURL}
                 box={this.state.box}
               />
+              </>
+            }
             </>
           }
         </div>
