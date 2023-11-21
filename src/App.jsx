@@ -82,19 +82,11 @@ class App extends Component{
       .then(response => this.displayBox(this.calculateFaceLoc(response)))
       .catch(error => console.log('error', error));
   }
-
-  onSignIn = () => {
-    this.setState({route:'home'})
+  
+  onRouteChange = (route)=> {
+    this.setState({route: route});
   }
   
-  onSignOut = () => {
-    this.setState({route:'signin'})
-  }
-
-  onRegister = () =>{
-    this.setState({route:'register'})
-  }
-
   render(){
     return(
       <>
@@ -102,14 +94,14 @@ class App extends Component{
           <TParticles/>
           {this.state.route === 'signin'
           ? <Signin 
-              onSignIn={this.onSignIn}
-              onRegister={this.onRegister}
+             onRouteChange={this.onRouteChange}
+              
           />
           : <>
               {this.state.route === 'register'
-              ? <Register onSignIn={this.onSignIn}/>
+              ? <Register onRouteChange={this.onRouteChange}/>
               : <>
-              <Navigation onSignOut={this.onSignOut} />
+              <Navigation onRouteChange={this.onRouteChange} />
               <Logo/>
               <Rank/>
               <ImageLinkForm 
