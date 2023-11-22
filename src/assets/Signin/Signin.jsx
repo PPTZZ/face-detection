@@ -19,20 +19,19 @@ class Signin extends Component {
 
     onSubmitSignIn = () => {
         fetch('http://localhost:3000/signin', {
-            method:'post',
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify({
-               email:this.state.signInEmail,
-               password:this.state.signInPassword 
-            })
-        })
-        .then(resposne => resposne.json())
-        .then(data => {
-            if (data === 'success'){
-                this.props.onRouteChange('home');
-            }
-        })
-        .catch(err => console.log(err));
+    method : 'post',
+    headers :{ 'Content-Type' : 'application/json'},
+    body : JSON.stringify({
+         email : this.state.signInEmail,
+         password : this.state.signInPassword,
+    })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data === 'success'){
+            this.props.onRouteChange('home');
+        }
+    }).catch(err =>console.log(err)) 
     }
     
     render(){
@@ -41,7 +40,7 @@ class Signin extends Component {
                 <div className='signin-card'>
                     <Logo/>
                     <h1 className='title black tc'>SIGN IN</h1> 
-                    <form>
+                    <div className='asta'>
                         <div className='email-box component'>
                             <label form="email-input">e-mail: </label>
                             <input
@@ -61,12 +60,11 @@ class Signin extends Component {
                                 onClick={this.onSubmitSignIn}>
                                 SIGN IN
                             </button>
-                            <p className='f3 link dim black underline pa3 pointer tc'
-                                onClick={()=> onRouteChange('register')}>
+                            <p className='f3 link dim black underline pa3 pointer tc'>
                                 REGISTER
                             </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         )
